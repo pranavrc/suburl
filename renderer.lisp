@@ -17,5 +17,19 @@
 	     :initarg :shortUrl
 	     :index t)))
 
-(defun getUrl (inputUrl)
+(defun getlongUrl (inputUrl)
+  (get-instance-by-value 'urlModel 'longUrl inputUrl))
+
+(defun getshortUrl (inputUrl)
   (get-instance-by-value 'urlModel 'shortUrl inputUrl))
+
+(defun longUrlExists (url)
+  (getlongUrl url))
+
+(defun shortUrlExists (url)
+  (getshortUrl url))
+
+(defun addPair (inputLongUrl inputShortUrl)
+  (with-transaction ()
+    (unless (or (longUrlExists inputlongUrl) (shortUrlExists inputShortUrl))
+      (make-instance 'urlModel :longUrl inputLongUrl :shortUrl inputShortUrl))))
