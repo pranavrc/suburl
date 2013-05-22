@@ -19,11 +19,11 @@
 				<p>
 				Enter your URL with wildcards([*]) and enter your desired corresponding short URL.<br />
 
-				<form id="URLForm">
+				<form id="URLForm" action="" method="post">
 					<fieldset>
-						<input class="longURL" size="41" type="text" placeholder="Your URL." /><br /><br />
-						http://u.onloop.net/<input class="shortURL" type="text" /><br /><br />
-						<input class="submitURL" type="submit" value="Shorten!" onclick="return submitURL();" />
+						<input class="longURL" size="41" type="text" name="longURL" placeholder="Your URL." /><br /><br />
+						http://u.onloop.net/<input class="shortURL" type="text" name="shortURL" /><br /><br />
+						<input class="submitURL" type="submit" value="Shorten!" />
 					</fieldset>
 				</form>
 			</div>
