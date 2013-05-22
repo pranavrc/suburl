@@ -1,11 +1,7 @@
-(asdf:operate 'asdf:load-op :cl-who)
-(asdf:operate 'asdf:load-op :restas)
+(defpackage :storage
+  (:use :cl :cl-who :elephant))
 
-(restas:define-module :restas.renderer
-    (:use :cl))
-
-(in-package :restas.renderer)
-(restas:debug-mode-on)
+(in-package :storage)
 
 (setf *store* (open-store '(:clsql (:sqlite3 "/tmp/suburl.db"))))
 
