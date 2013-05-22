@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>suburl - Shorten URLs with wildcard characters.</title>
+		<link rel="stylesheet" href="/index.css">
+		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+		<meta charset="utf-8" />
+	</head>
+	
+	<body>
+		<div id="description">
+			<h1>suburl</h1>
+
+			<p id="exp">URL Shortening with wildcard support.</p>
+
+			<hr />
+
+			<div id="howto">
+				<p>
+				Enter your URL with wildcards([*]) and enter your desired corresponding short URL.<br />
+
+				<form id="URLForm">
+					<fieldset>
+						<input class="longURL" size="41" type="text" placeholder="Your URL." /><br /><br />
+						http://u.onloop.net/<input class="shortURL" type="text" /><br /><br />
+						<input class="submitURL" type="submit" value="Shorten!" onclick="return submitURL();" />
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
