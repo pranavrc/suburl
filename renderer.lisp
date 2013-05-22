@@ -1,9 +1,11 @@
+(asdf:operate 'asdf:load-op :elephant)
+
 (defpackage :storage
-  (:use :cl :cl-who :elephant))
+  (:use :cl :elephant))
 
 (in-package :storage)
 
-(setf *store* (open-store '(:clsql (:sqlite3 "/tmp/suburl.db"))))
+(setf *store* (open-store '(:clsql (:sqlite3 "./db/suburl.db"))))
 
 (defpclass urlModel ()
   ((longUrl :reader longUrl
@@ -29,3 +31,6 @@
   (with-transaction ()
     (unless (or (longUrlExists inputlongUrl) (shortUrlExists inputShortUrl))
       (make-instance 'urlModel :longUrl inputLongUrl :shortUrl inputShortUrl))))
+
+(defun allUrls ()
+  (nreverse (get-instances-by-range 'urlModel 'longUrl nil nil)))
