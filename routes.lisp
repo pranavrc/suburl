@@ -15,6 +15,7 @@
   (pathname "~/workbase/suburl/res/index.html"))
 
 (restas:define-route urlSubmit ("" :method :post)
+  (storage::addPair (hunchentoot:post-parameter "longURL") (hunchentoot:post-parameter "shortURL"))
   (who:with-html-output-to-string (out)
     (:a :href (hunchentoot:post-parameter "longURL") (who:str (hunchentoot:post-parameter "shortURL")))))
 
