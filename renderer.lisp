@@ -34,3 +34,17 @@
 
 (defun allUrls ()
   (nreverse (get-instances-by-range 'urlModel 'longUrl nil nil)))
+
+(defun replaceSubstr (string part replacement &key (test #'char=))
+  ;; http://cl-cookbook.sourceforge.net/strings.html#manip
+  (with-output-to-string (out)
+    (loop with part-length = (length part)
+       for old-pos = 0 then (+ pos part-length)
+       for pos = (search part string
+			 :start2 old-pos
+			 :test test)
+       do (write-string string out
+			:start old-pos
+			:end (or pos (length string)))
+       when pos do (write-string replacement out)
+       while pos))) 
