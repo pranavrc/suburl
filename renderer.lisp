@@ -5,7 +5,7 @@
 
 (in-package :storage)
 
-(setf *store* (open-store '(:clsql (:sqlite3 "./db/suburl.db"))))
+(setf *store* (open-store '(:clsql (:sqlite3 "/home/pranav/workbase/suburl/db/suburl.db"))))
 
 (defpclass urlModel ()
   ((longUrl :reader longUrl
@@ -15,11 +15,11 @@
 	     :initarg :shortUrl
 	     :index t)))
 
-(defun getlongUrl (inputUrl)
-  (get-instance-by-value 'urlModel 'longUrl inputUrl))
+(defun getlongUrlFromShort (inputUrl)
+  (longUrl (get-instance-by-value 'urlModel 'shortUrl inputUrl)))
 
-(defun getshortUrl (inputUrl)
-  (get-instance-by-value 'urlModel 'shortUrl inputUrl))
+(defun getshortUrlFromLong (inputUrl)
+  (shortUrl (get-instance-by-value 'urlModel 'longUrl inputUrl)))
 
 (defun longUrlExists (url)
   (getlongUrl url))
