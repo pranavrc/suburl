@@ -1,5 +1,6 @@
 (asdf:operate 'asdf:load-op :cl-who)
 (asdf:operate 'asdf:load-op :restas)
+(asdf:operate 'asdf:load-op :cl-ppcre)
 
 (import :storage)
 
