@@ -11,15 +11,15 @@
   ((longUrl :reader longUrl
 	    :initarg :longUrl
 	    :index t)
-   (shortUrl :accessor shortUrl
+   (shortUrl :reader shortUrl
 	     :initarg :shortUrl
 	     :index t)))
 
-(defun getlongUrlFromShort (inputUrl)
-  (longUrl (get-instance-by-value 'urlModel 'shortUrl inputUrl)))
+(defun getlongUrl (inputUrl)
+  (get-instance-by-value 'urlModel 'longUrl inputUrl))
 
-(defun getshortUrlFromLong (inputUrl)
-  (shortUrl (get-instance-by-value 'urlModel 'longUrl inputUrl)))
+(defun getshortUrl (inputUrl)
+  (get-instance-by-value 'urlModel 'shortUrl inputUrl))
 
 (defun longUrlExists (url)
   (getlongUrl url))
