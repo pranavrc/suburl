@@ -55,3 +55,15 @@
      as y = (position delim string :start x)
      collect (subseq string x y)
      while y))
+
+(defun concatList (target)
+  ;; Takes a list of strings and concatenates
+  ;; them into a single string.
+  (format nil "~{~a~}" target))
+
+(defun mergeListItems (firstList secondList delim)
+  ;; Takes two lists, and returns a list of alternately
+  ;; concatenated items.
+  (mapcar #'(lambda (x y) (concatenate 'string x delim y))
+	  firstList secondList))
+
