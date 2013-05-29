@@ -47,4 +47,11 @@
 			:start old-pos
 			:end (or pos (length string)))
        when pos do (write-string replacement out)
-       while pos))) 
+       while pos)))
+
+(defun stringSplit (string delim)
+  ;; Splits a string into substrings around the delimiter.
+  (loop for x = 0 then (1+ y)
+     as y = (position delim string :start x)
+     collect (subseq string x y)
+     while y))
