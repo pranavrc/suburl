@@ -35,4 +35,12 @@
 			    (:a :href (hunchentoot:post-parameter "longURL") (who:str (hunchentoot:post-parameter "shortURL"))))))))
   *response*)
 
+(restas:define-route redir (":(input)/*params")
+  (restas:redirect 
+   (storage::concatList
+    (storage::mergeListItems
+     (ppcre:split "\\[\\*\\]" (storage::longUrl (storage::getshortUrl input)))
+     (storage::stringSplit params #\,)
+     ""))))
+
 (restas:start :restas.routes :port 8080)
