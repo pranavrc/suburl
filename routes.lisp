@@ -14,7 +14,7 @@
 
 (setf (who:html-mode) :html5)
 
-(restas:define-route main ("" :method :get)
+(restas:define-route main ("")
   (pathname "~/workbase/suburl/res/index.html"))
 
 (restas:define-route urlSubmit ("" :method :post)
@@ -36,11 +36,15 @@
   *response*)
 
 (restas:define-route redir (":(input)/*params")
-  (restas:redirect 
-   (storage::concatList
-    (storage::mergeListItems
-     (ppcre:split "\\[\\*\\]" (storage::longUrl (storage::getshortUrl input)))
-     (storage::stringSplit params #\,)
-     ""))))
+  (if (not (storage::getshortUrl input))
+      (progn
+	(setf *response* "Invalid URL.")
+	*response)
+      (restas:redirect 
+       (storage::concatList
+	(storage::mergeListItems
+	 (ppcre:split "\\[\\*\\]" (storage::longUrl (storage::getshortUrl input)))
+	 (storage::stringSplit params #\,)
+	 "")))))
 
 (restas:start :restas.routes :port 8080)
