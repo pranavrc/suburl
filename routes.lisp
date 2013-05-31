@@ -39,12 +39,15 @@
   (if (not (storage::getshortUrl input))
       (progn
 	(setf *response* "Invalid URL.")
-	*response)
-      (restas:redirect 
-       (storage::concatList
-	(storage::mergeListItems
-	 (ppcre:split "\\[\\*\\]" (storage::longUrl (storage::getshortUrl input)))
-	 (storage::stringSplit params #\,)
-	 "")))))
+	*response*)
+      (progn
+	(setf *response*
+	      (storage::concatList
+	       (storage::mergeListItems
+		(ppcre:split "\\[\\*\\]" (storage::longUrl (storage::getshortUrl input)))
+		(storage::stringSplit (first params) #\,)
+		"")))
+	(print *response*)
+	(restas:redirect *response*))))
 
 (restas:start :restas.routes :port 8080)
