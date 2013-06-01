@@ -13,20 +13,33 @@
 
 			<p id="exp">URL Shortening with wildcard support.</p>
 
-			<hr />
-
 			<div id="howto">
 				<p>
-				Enter your URL with wildcards([*]) and enter your desired corresponding short URL.<br />
-
 				<form id="URLForm" action="" method="post">
 					<fieldset>
-						<input class="longURL" size="41" type="text" name="longURL" placeholder="Your URL." /><br /><br />
-						http://u.onloop.net/<input class="shortURL" type="text" name="shortURL" /><br /><br />
+						<input class="longURL" size="41" type="text" name="longURL" placeholder="Original URL with/without wildcards." /><br /><br />
+						http://u.onloop.net/<input class="shortURL" type="text" name="shortURL" placeholder="Short URL." /><br /><br />
 						<input class="submitURL" type="submit" value="Shorten!" />
 					</fieldset>
 				</form>
+
+				<p>
+				Enter an URL with/without wildcard characters ([*]):<br /> <i>http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias=[*]&field-keywords=[*]</i><br /><br />
+
+				Enter desired short URL:<br /> <i>amzn</i><br /><br />
+
+				Access short URL with parameters to substitute wildcards, like so:<br /> <a href="/amzn/books,krautrocksampler">u.onloop.net/amzn/books,krautrocksampler</a><br /><br />
 			</div>
+
+			<hr />
+
+			<p id="footer">
+			&copy; <a href="http://onloop.net/" target="_blank">Pranav Ravichandran</a>.
+			</p>
+
 		</div>
+
+		<a href="https://github.com/pranavrc/suburl/"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+
 	</body>
 </html>
