@@ -17,6 +17,12 @@
 (restas:define-route main ("")
   (pathname "~/workbase/suburl/res/index.html"))
 
+(restas:define-route css ("index.css")
+  (pathname "~/workbase/suburl/res/index.css"))
+
+(restas:define-route favicon ("favicon.ico")
+  (pathname "~/workbase/suburl/res/favicon.ico"))
+
 (restas:define-route urlSubmit ("" :method :post)
   (cond
     ((storage::longUrlExists (hunchentoot:post-parameter "longURL"))
@@ -47,7 +53,6 @@
 		(ppcre:split "\\[\\*\\]" (storage::longUrl (storage::getshortUrl input)))
 		(storage::stringSplit (first params) #\,)
 		"")))
-	(print *response*)
 	(restas:redirect *response*))))
 
 (restas:start :restas.routes :port 8080)
