@@ -1,0 +1,82 @@
+body {
+	background-color: hsl(0,0%,95%);
+	line-height: 175%;
+}
+
+#description {
+	margin: auto;
+	/*width: 60%;*/
+	font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	text-shadow: hsla(0,0%,40%,0.5) 0 -1px 0, hsla(0,0%,100%,.6) 0 2px 1px;
+	text-align: center;
+}
+
+#howto {
+	margin-left: 15%;
+	text-align: left;
+}
+
+#exp {
+	text-align: center;
+	font-size: 13px;
+	margin-bottom: 5px;
+}
+
+#footer {
+	display: block;
+	margin-top: 0px;
+	font-size: 11px;
+	text-align: center;
+}
+
+hr {
+	color: white;
+	border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.3), rgba(0,0,0,0));
+	background-image: -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.3), rgba(0,0,0,0));
+	background-image: -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.3), rgba(0,0,0,0));
+	background-image: -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.3), rgba(0,0,0,0));
+}
+
+h1 {
+	text-align: center;
+	margin-bottom: 5px;
+}
+
+input {
+	height: 20px;
+	border-radius: 5px;
+	border: 1px;
+	margin-left: 2px;
+	-webkit-box-shadow: 0px 0px 15px rgba(128, 0, 0, 0.3);
+	-moz-box-shadow: 0px 0px 15px rgba(128, 0, 0, 0.3);
+	box-shadow: 0px 0px 15px rgba(128, 0, 0, 0.3);
+	font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	text-shadow: hsla(0,0%,40%,0.5) 0 -1px 0, hsla(0,0%,100%,.6) 0 2px 1px;
+}
+
+.longURL {
+	width: 70%;
+}
+
+.submitURL {
+	width: 150px;
+	height: 23px;
+	border: 1px solid #999;
+}
+
+a:link {
+	color: #800000;
+}
+
+a:visited {
+	color: #696969; 
+}
+
+fieldset {
+	background-color: transparent;
+	border-color: transparent;
+}
