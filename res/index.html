@@ -5,8 +5,10 @@
 		<link rel="stylesheet" href="/index.css">
 		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 		<meta charset="utf-8" />
+
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 	</head>
-	
+
 	<body>
 		<div id="description">
 			<h1>suburl</h1>
@@ -15,11 +17,12 @@
 
 			<div id="howto">
 				<p>
-				<form id="URLForm" action="" method="post">
+				<form id="URLForm">
 					<fieldset>
-						<input id="longURL" size="41" type="text" name="longURL" placeholder="Original URL with/without wildcards." /><br /><br />
-						http://u.onloop.net/<input id="shortURL" type="text" name="shortURL" placeholder="Short URL." /><br /><br />
-						<input id="submitURL" type="submit" value="Shorten!" />
+						<input class="longURL" size="41" type="text" name="longURL" placeholder="Original URL with/without wildcards." /><br /><br />
+						http://u.onloop.net/<input class="shortURL" type="text" name="shortURL" placeholder="Short URL." /><br /><br />
+						<input class="submitURL" type="submit" value="Shorten!" onclick="return global.formSubmit();" />
+						<div id="status"></div>
 					</fieldset>
 				</form>
 
@@ -42,11 +45,29 @@
 		</div>
 
 		<a href="https://github.com/pranavrc/suburl/"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
-	
+
 		<script>
 			window.onload = function() {
-				document.getElementById('longURL').focus();
+				document.getElementsByClassName('longURL')[0].focus();
 			}
+
+			var global = (function () {
+				var requests;
+
+				return {
+					formSubmit: function formSubmit() {
+						$('div#status').html('<img src="/loader.gif" alt="Fetching..." />');
+
+						if (requests) requests.abort();
+
+				    	requests = $.ajax({type:'POST', url: '', data:$('#URLForm').serialize(), success: function(response) {
+								   		$('div#status').html(response);
+								   }});
+
+						return false;
+					}
+				};
+			})();
 		</script>
 	</body>
 </html>
