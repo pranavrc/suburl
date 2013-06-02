@@ -23,6 +23,9 @@
 (restas:define-route favicon ("favicon.ico")
   (pathname "~/workbase/suburl/res/favicon.ico"))
 
+(restas:define-route loader ("loader.gif")
+  (pathname "~/workbase/suburl/res/loader.gif"))
+
 (restas:define-route urlSubmit ("" :method :post)
   (cond
     ((storage::longUrlExists (hunchentoot:post-parameter "longURL"))
