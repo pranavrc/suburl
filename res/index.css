@@ -58,11 +58,11 @@ input {
 	text-shadow: hsla(0,0%,40%,0.5) 0 -1px 0, hsla(0,0%,100%,.6) 0 2px 1px;
 }
 
-.longURL {
+#longURL {
 	width: 70%;
 }
 
-.submitURL {
+#submitURL {
 	width: 150px;
 	height: 23px;
 	border: 1px solid #999;
