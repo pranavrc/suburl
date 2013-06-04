@@ -1,7 +1,7 @@
 (asdf:operate 'asdf:load-op :elephant)
 
 (defpackage :storage
-  (:use :cl :elephant))
+  (:use :cl :cl-ppcre :elephant))
 
 (in-package :storage)
 
@@ -67,3 +67,13 @@
   (mapcar #'(lambda (x y) (concatenate 'string x delim y))
 	  firstList secondList))
 
+(defun validateUrl (regex target-string &key (start 0) (end (length target-string)))
+  ;; Short URLs need to contain no more than 26 characters.
+  ;; Alphabets and numbers only.
+  (let ((sum 0))
+    (ppcre:do-matches (s e regex target-string nil :start start :end end)
+      (incf sum (- e s)))
+    (if (= (/ sum (- end start)) 1)
+	t
+	nil)))
+  
