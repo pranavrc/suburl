@@ -1,4 +1,5 @@
 (asdf:operate 'asdf:load-op :elephant)
+(asdf:operate 'asdf:load-op :cl-ppcre)
 
 (defpackage :storage
   (:use :cl :cl-ppcre :elephant))
