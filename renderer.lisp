@@ -69,8 +69,7 @@
 	  firstList secondList))
 
 (defun validateUrl (regex target-string &key (start 0) (end (length target-string)))
-  ;; Short URLs need to contain no more than 26 characters.
-  ;; Alphabets and numbers only.
+  ;; Checks if target-string matches the given regex.
   (let ((sum 0))
     (ppcre:do-matches (s e regex target-string nil :start start :end end)
       (incf sum (- e s)))
