@@ -77,3 +77,6 @@
 	t
 	nil)))
   
+(defun scanUrl (input)
+  ;; Scans URL to check for protocol.
+  (and (cl-ppcre:scan "^(https?|ftp|file)://.+$" input) t))
