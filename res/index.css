@@ -80,3 +80,9 @@ fieldset {
 	background-color: transparent;
 	border-color: transparent;
 }
+
+#status {
+	margin-top: 10px;
+	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+	font-size:13px;
+}
