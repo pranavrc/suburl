@@ -86,3 +86,7 @@ fieldset {
 	font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
 	font-size:13px;
 }
+
+p {
+	background: url('');
+}
