@@ -30,12 +30,11 @@
   (cond
     ((not (storage::scanUrl (hunchentoot:post-parameter "longURL")))
      (setf *response* "Invalid URL (Missing Protocol)."))
-    ((or (not (storage::validateUrl "((?:[A-Za-z][A-Za-z0-9_]*))"
+    ((or (not (storage::validateUrl "((?:[A-Za-z0-9_]*))"
 				    (hunchentoot:post-parameter "shortURL")))
 	 (not (< (length (hunchentoot:post-parameter "shortURL")) 11)))
-     (setf *response* "Short URLs must:<br />1. Start with an alphabet.
-<br />2. Contain only alphanumeric characters or underscore.<br />
-3. Cannot be more than 10 characters in length."))
+     (setf *response* "Short URLs can contain only alphanumeric characters or underscore,
+ and cannot be more than 10 characters in length."))
     ((storage::longUrlExists (hunchentoot:post-parameter "longURL"))
      (setf *response* 
 	   (who:with-html-output-to-string (out)
