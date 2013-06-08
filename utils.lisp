@@ -30,8 +30,8 @@
 
 (defun addPair (inputLongUrl inputShortUrl)
   (with-transaction ()
-    (unless (or (longUrlExists inputlongUrl) (shortUrlExists inputShortUrl))
-      (make-instance 'urlModel :longUrl inputLongUrl :shortUrl inputShortUrl))))
+    ;;(unless (or (longUrlExists inputlongUrl) (shortUrlExists inputShortUrl))
+    (make-instance 'urlModel :longUrl inputLongUrl :shortUrl inputShortUrl)))
 
 (defun allUrls ()
   (nreverse (get-instances-by-range 'urlModel 'longUrl nil nil)))
