@@ -28,6 +28,8 @@
 
 (restas:define-route urlSubmit ("" :method :post)
   (cond
+    ((not (storage::scanUrl (hunchentoot:post-parameter "longURL")))
+     (setf *response* "Invalid URL (Missing Protocol)."))
     ((or (not (storage::validateUrl "((?:[A-Za-z][A-Za-z0-9_]*))"
 				    (hunchentoot:post-parameter "shortURL")))
 	 (not (< (length (hunchentoot:post-parameter "shortURL")) 11)))
