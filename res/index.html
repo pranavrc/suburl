@@ -19,7 +19,7 @@
 				<p>
 				<form id="URLForm">
 					<fieldset>
-						<input class="longURL" size="41" type="text" name="longURL" placeholder="Original URL with/without wildcards ([*]).   e.g., http://google.com/search?q=[*]" /><br /><br />
+						<input class="longURL" size="41" type="text" name="longURL" placeholder="URL with/without wildcards ([*]).   e.g., http://google.com/search?q=[*]" /><br /><br />
 						http://u.onloop.net/<input class="shortURL" type="text" name="shortURL" placeholder="<= 10 chars (A-Z a-z 0-9 _)" /><br /><br />
 						<input class="submitURL" type="submit" value="Shorten!" onclick="return global.formSubmit();" />
 						<div id="status"></div>
@@ -33,9 +33,11 @@
 
 				-- Enter desired short URL:<br /> <i>amzn</i><br />
 
-				-- Access short URL with parameters to substitute wildcards, like so:<br /> <a href="/amzn/books,krautrocksampler">u.onloop.net/amzn/books,krautrocksampler</a><br />
+				-- Access short URL with parameters to substitute wildcards, like so:<br /> <a href="/amzn/books,krautrocksampler">u.onloop.net/amzn/books,krautrocksampler</a> or <a href="/amzn/music,frank zappa">u.onloop.net/amzn/music,frank zappa</a><br />
 
-				-- And yes, URLs can be added the normal way.
+				-- And yes, URLs can be shortened the normal way (without wildcards).<br />
+
+				-- A couple more examples: <a href="/goog/recursion">u.onloop.net/goog/recursion</a> and <a href="/wiki/buffalo buffalo buffalo">u.onloop.net/wiki/buffalo buffalo buffalo</a>
 			</div>
 
 			<hr />
