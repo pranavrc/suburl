@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>suburl - Shorten URLs with wildcard characters.</title>
+		<title>suburl - Shorten URLs with Wildcards.</title>
 		<link rel="stylesheet" href="/index.css">
 		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 		<meta charset="utf-8" />
@@ -13,14 +13,14 @@
 		<div id="description">
 			<h1>suburl</h1>
 
-			<p id="exp">URL Shortening with wildcard support.</p>
+			<p id="exp">URL Shortening with Wildcard substitution.</p>
 
 			<div id="howto">
 				<p>
 				<form id="URLForm">
 					<fieldset>
-						<input class="longURL" size="41" type="text" name="longURL" placeholder="Original URL with/without wildcards." /><br /><br />
-						http://u.onloop.net/<input class="shortURL" type="text" name="shortURL" placeholder="Short URL." /><br /><br />
+						<input class="longURL" size="41" type="text" name="longURL" placeholder="Original URL with/without wildcards ([*]).   e.g., http://google.com/search?q=[*]" /><br /><br />
+						http://u.onloop.net/<input class="shortURL" type="text" name="shortURL" placeholder="<= 10 chars (A-Z a-z 0-9 _)" /><br /><br />
 						<input class="submitURL" type="submit" value="Shorten!" onclick="return global.formSubmit();" />
 						<div id="status"></div>
 					</fieldset>
@@ -29,13 +29,13 @@
 				<hr />
 
 				<p>
-				Enter an URL with/without wildcard characters ([*]):<br /> <i>http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias=[*]&field-keywords=[*]</i><br />
+				-- Enter an URL with/without wildcard characters ([*]):<br /> <i>http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias=[*]&field-keywords=[*]</i><br />
 
-				Enter desired short URL:<br /> <i>amzn</i><br />
+				-- Enter desired short URL:<br /> <i>amzn</i><br />
 
-				Access short URL with parameters to substitute wildcards, like so:<br /> <a href="/amzn/books,krautrocksampler">u.onloop.net/amzn/books,krautrocksampler</a><br />
+				-- Access short URL with parameters to substitute wildcards, like so:<br /> <a href="/amzn/books,krautrocksampler">u.onloop.net/amzn/books,krautrocksampler</a><br />
 
-				And yes, URLs can be added the normal way.
+				-- And yes, URLs can be added the normal way.
 			</div>
 
 			<hr />
