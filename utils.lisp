@@ -6,7 +6,7 @@
 
 (in-package :storage)
 
-(setf *store* (open-store '(:clsql (:sqlite3 "/home/pranav/workbase/suburl/db/suburl.db"))))
+(setf *store* (open-store '(:clsql (:sqlite3 "/home/vanharp/workbase/suburl/db/suburl.db"))))
 
 (defpclass urlModel ()
   ((longUrl :reader longUrl
