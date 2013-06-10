@@ -44,15 +44,17 @@
 	   (who:with-html-output-to-string (out)
 	     (:p "Link already exists at Short URL: ")
 	     (:a :href 
-		 inputLong
-		 (who:str
-		  (storage::shortUrl (storage::getlongUrl inputLong)))))))
+		 (storage::urlEncode inputLong)
+		 (who:str (concatenate 'string "u.onloop.net/"
+		  (storage::shortUrl (storage::getlongUrl inputLong))))))))
     ((storage::shortUrlExists inputShort)
      (setf *response* "Short URL exists. Try another."))
     (t (progn
 	 (storage::addPair inputLong inputShort)
 	 (setf *response* (who:with-html-output-to-string (out)
-			    (:a :href inputLong (who:str inputShort)))))))
+			    (:a :href (storage::urlEncode inputLong)
+				(who:str
+				 (concatenate 'string "u.onloop.net/" inputShort))))))))
   *response*)
 
 (restas:define-route redir (":(input)/*params")
