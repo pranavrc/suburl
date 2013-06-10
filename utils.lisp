@@ -36,6 +36,9 @@
 (defun allUrls ()
   (nreverse (get-instances-by-range 'urlModel 'longUrl nil nil)))
 
+(defun printAllUrls ()
+  (mapcar #'(lambda (each) (format t "~A - ~A~%" (storage::shortUrl each) (storage::longUrl each))) (storage::allUrls)))
+
 (defun replaceSubstr (string part replacement &key (test #'char=))
   ;; http://cl-cookbook.sourceforge.net/strings.html#manip
   (with-output-to-string (out)
