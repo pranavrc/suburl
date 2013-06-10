@@ -27,28 +27,32 @@
   (pathname "~/workbase/suburl/res/loader.gif"))
 
 (restas:define-route urlSubmit ("" :method :post)
+  (setf inputShort (string-trim " " (hunchentoot:post-parameter "shortURL")))
+  (setf inputLong (string-trim " " (hunchentoot:post-parameter "longURL")))
   (cond
-    ((not (storage::scanUrl (hunchentoot:post-parameter "longURL")))
+    ((= (length inputShort) 0)
+     (setf *response* "The short URL cannot be empty."))
+    ((not (storage::scanUrl inputLong))
      (setf *response* "Invalid URL (Missing Protocol)."))
     ((or (not (storage::validateUrl "((?:[A-Za-z0-9_]*))"
-				    (hunchentoot:post-parameter "shortURL")))
-	 (not (< (length (hunchentoot:post-parameter "shortURL")) 11)))
+				    inputShort))
+	 (not (< (length inputShort) 11)))
      (setf *response* "Short URLs can contain only alphanumeric characters and underscore,
  and cannot be more than 10 characters in length."))
-    ((storage::longUrlExists (hunchentoot:post-parameter "longURL"))
+    ((storage::longUrlExists inputLong)
      (setf *response* 
 	   (who:with-html-output-to-string (out)
 	     (:p "Link already exists at Short URL: ")
 	     (:a :href 
-		 (hunchentoot:post-parameter "longURL")
+		 inputLong
 		 (who:str
-		  (storage::shortUrl (storage::getlongUrl (hunchentoot:post-parameter "longURL"))))))))
-    ((storage::shortUrlExists (hunchentoot:post-parameter "shortURL"))
+		  (storage::shortUrl (storage::getlongUrl inputLong)))))))
+    ((storage::shortUrlExists inputShort)
      (setf *response* "Short URL exists. Try another."))
     (t (progn
-	 (storage::addPair (hunchentoot:post-parameter "longURL") (hunchentoot:post-parameter "shortURL"))
+	 (storage::addPair inputLong inputShort)
 	 (setf *response* (who:with-html-output-to-string (out)
-			    (:a :href (hunchentoot:post-parameter "longURL") (who:str (hunchentoot:post-parameter "shortURL"))))))))
+			    (:a :href inputLong (who:str inputShort)))))))
   *response*)
 
 (restas:define-route redir (":(input)/*params")
