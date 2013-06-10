@@ -80,3 +80,13 @@
 (defun scanUrl (input)
   ;; Scans URL to check for protocol.
   (and (cl-ppcre:scan "^(https?|ftp|file)://.+$" input) t))
+
+ (let ((urlRegex (ppcre:create-scanner "[^a-zA-Z0-9_\\-\\/\\:\\[\\]\\*.]")))
+    (defun urlEncode (string)
+      "URL-encodes a string."
+      ;; won't work for Corman Lisp because non-ASCII characters aren't 8-bit there
+      ;; From weitz.de/cl-ppcre examples.
+      (flet ((convert (target-string start end match-start match-end reg-starts reg-ends)
+             (declare (ignore start end match-end reg-starts reg-ends))
+             (format nil "%~2,'0x" (char-code (char target-string match-start)))))
+        (ppcre:regex-replace-all urlRegex string #'convert))))
