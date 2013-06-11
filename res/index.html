@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>suburl - Shorten URLs with Wildcards.</title>
+		<title>suburl - Sanitize URLs by shortening them with Wildcards.</title>
 		<link rel="stylesheet" href="/index.css">
 		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 		<meta charset="utf-8" />
@@ -24,7 +24,7 @@
 		<div id="description">
 			<h1>suburl</h1>
 
-			<p id="exp">URL Shortening with Wildcard substitution.</p>
+			<p id="exp">URL Sanitizer with Shortening and Wildcard substitution.</p>
 
 			<div id="howto">
 				<p>
@@ -42,13 +42,13 @@
 				<p>
 				-- Enter an URL with/without wildcard characters ([*]):<br /> <i>http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias=<strong>[*]</strong>&field-keywords=<strong>[*]</strong></i><br />
 
-				-- Enter desired short URL:<br /> <i>amzn</i><br />
+				-- Enter desired short URL: <i>amzn</i><br />
 
 				-- Access short URL with parameters to substitute wildcards, like so:<br /> <a href="/amzn/books,krautrocksampler" target="_blank">u.onloop.net/amzn/books,krautrocksampler</a> or <a href="/amzn/music,frank zappa" target="_blank">u.onloop.net/amzn/music,frank zappa</a><br />
 
 				-- And yes, URLs can be shortened the normal way (without wildcards).<br />
 
-				-- A couple more examples: <a href="/goog/recursion" target="_blank">u.onloop.net/goog/recursion</a> and <a href="/wiki/buffalo buffalo buffalo" target="_blank">u.onloop.net/wiki/buffalo buffalo buffalo</a></p>
+				-- A couple more examples:<br /><a href="/goog/recursion" target="_blank">u.onloop.net/goog/recursion</a> (<i>http://google.com/search?q=<strong>[*]</strong></i>)<br /><a href="/wiki/buffalo buffalo buffalo" target="_blank">u.onloop.net/wiki/buffalo buffalo buffalo</a> (<i>http://en.wikipedia.org/w/index.php?search=<strong>[*]</strong></i>)</p>
 			</div>
 
 			<hr />
