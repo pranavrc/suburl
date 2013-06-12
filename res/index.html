@@ -72,7 +72,7 @@
 						if (requests) requests.abort();
 
 						if (!($('.shortURL').val())) {
-							$('.shortURL').val((this.randomize(5, 10)));
+							$('.shortURL').val((this.randomize(5, 7)));
 						}
 
 				    	requests = $.ajax({type:'POST', url: '', data:$('#URLForm').serialize(), success: function(response) {
