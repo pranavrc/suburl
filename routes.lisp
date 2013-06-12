@@ -52,7 +52,7 @@
     (t (progn
 	 (storage::addPair inputLong inputShort)
 	 (setf *response* (who:with-html-output-to-string (out)
-			    (:a :href (storage::urlEncode inputLong)
+			    (:a :href inputShort
 				(who:str
 				 (concatenate 'string "u.onloop.net/" inputShort))))))))
   *response*)
