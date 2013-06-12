@@ -31,7 +31,7 @@
 				<form id="URLForm">
 					<fieldset>
 						<input class="longURL" size="41" type="text" name="longURL" placeholder="URL with/without wildcards ([*]).   e.g., http://google.com/search?q=[*]" /><br /><br />
-						http://u.onloop.net/<input class="shortURL" size="35" type="text" name="shortURL" placeholder="short URL <= 10 chars (A-Z a-z 0-9 _)" /><br /><br />
+						http://u.onloop.net/<input class="shortURL" size="35" type="text" name="shortURL" placeholder="short URL <= 10 chars (A-Z a-z 0-9 _)" /> (Leave empty for random short URL.)<br /><br />
 						<input class="submitURL" type="submit" value="Shorten!" onclick="return global.formSubmit();" />
 						<div id="status"></div>
 					</fieldset>
@@ -71,11 +71,24 @@
 
 						if (requests) requests.abort();
 
+						if (!($('.shortURL').val())) {
+							$('.shortURL').val((this.randomize(5, 10)));
+						}
+
 				    	requests = $.ajax({type:'POST', url: '', data:$('#URLForm').serialize(), success: function(response) {
 								   		$('div#status').html(response);
 								   }});
 
 						return false;
+					},
+
+					randomize: function randomize(min, max) {
+						// Reimplemented from http://stackoverflow.com/a/10727155
+						var chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_';
+						var length = Math.floor(Math.random() * (max - min + 1)) + min;
+						var result = '';
+    					for (var i = length; i > 0; --i) result += chars[Math.round(Math.random() * (chars.length - 1))];
+						return result;
 					}
 				};
 			})();
