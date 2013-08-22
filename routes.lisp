@@ -33,7 +33,7 @@
     ((= (length inputShort) 0)
      (setf *response* "The short URL cannot be empty."))
     ((not (storage::scanUrl inputLong))
-     (setf *response* "Invalid URL (Missing Protocol)."))
+     (setf *response* "Invalid URL (Missing Protocol http/https/ftp/file)."))
     ((or (not (storage::validateUrl "((?:[A-Za-z0-9_]*))"
 				    inputShort))
 	 (not (< (length inputShort) 11)))
